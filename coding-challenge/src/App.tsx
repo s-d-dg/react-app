@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './App.module.css';
 import BookStoreList from './components/book-store-list/book-store-list';
+import Loader from './ui/loader/loader';
 
 export interface BookModel {
   id: string;
@@ -61,10 +62,20 @@ const DUMMY_BOOK_STORES: BookStoreModel[] = [
 ];
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if(isLoading) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }
+  }, [isLoading])
+
   return (
     <div className={classes.layout}>
       <div className={classes.title}><h1>BEST SELLERS !</h1></div>
-      <BookStoreList bookStores={DUMMY_BOOK_STORES} />
+      {isLoading ? <Loader /> :<BookStoreList bookStores={DUMMY_BOOK_STORES} />}
     </div>
   );
 }

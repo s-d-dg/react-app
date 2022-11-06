@@ -16,13 +16,18 @@ const BookStoreData = ({ data, className }: BookStoreDataProps) => {
         </div>
 
         <table>
-            <tr className={classes['table-title']}>Best-selling books</tr>
-            {data.bestSellers.map(book => (
-                <tr className={classes.results}>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
-                </tr>
-            ))}
+            <thead>
+                <tr className={classes['table-title']}>
+                    <td>Best-selling books</td></tr>
+            </thead>
+            <tbody>
+                {data.bestSellers.map(book => (
+                    <tr key={book.id} className={classes.results}>
+                        <td>{book.title}</td>
+                        <td>{book.author}</td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
     </div>;
 }
