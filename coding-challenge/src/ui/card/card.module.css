@@ -1,10 +1,12 @@
 .card {
+    border: 1px solid;
     width: 90%;
     padding: 2rem;
+    margin-top: 2rem;
 }
 
 .card:hover {
+    cursor: pointer;
     border: 1px solid;
-    padding: 10px;
     box-shadow: 2px 3px 1px 3px #888888;
 }

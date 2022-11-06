@@ -1,8 +1,12 @@
 import classes from './book-store-image.module.css';
 
-const BookStoreImage = (props: any) => {
+interface BookStoreImageProps {
+    imgUrl: string;
+}
+
+const BookStoreImage = ({ imgUrl }: BookStoreImageProps) => {
     return <span className={classes.image}>
-        <img />
+        {imgUrl}
     </span>;
 };
 
