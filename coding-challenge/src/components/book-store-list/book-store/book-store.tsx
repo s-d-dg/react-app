@@ -1,4 +1,4 @@
-import { BookStoreModel } from '../../../App';
+import { BookStoreModel } from '../../../store/bookStores/model';
 import Card from '../../../ui/card/card';
 import BookStoreContent from './book-store-content/book-store-content';
 import BookStoreFooter from './book-store-footer/book-store-footer';

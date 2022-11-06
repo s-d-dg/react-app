@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { BookStoreModel } from "../../App";
+import { BookStoreModel } from '../../store/bookStores/model';
 import BookStore from './book-store/book-store';
 
 interface BookStoreListProps {

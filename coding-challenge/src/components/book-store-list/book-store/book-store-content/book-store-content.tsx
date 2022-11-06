@@ -1,4 +1,3 @@
-import { BookStoreModel } from '../../../../App';
 import { BookStoreContentPropTypes } from '../book-store';
 import classes from './book-store-content.module.css';
 import BookStoreData from './book-store-data/book-store-data';
