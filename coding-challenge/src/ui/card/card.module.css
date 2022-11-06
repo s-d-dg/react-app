@@ -1,0 +1,10 @@
+.card {
+    width: 90%;
+    padding: 2rem;
+}
+
+.card:hover {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 2px 3px 1px 3px #888888;
+}

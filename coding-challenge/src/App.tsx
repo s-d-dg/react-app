@@ -11,7 +11,8 @@ const DUMMY_BOOK_STORES = [
   rating: 6,
   countryFlagImg: '',
   bestSellers: [
-    {id: 'a', title: 'aaa', author: 'aaaa'}
+    {id: 'a', title: 'aaa', author: 'aaaa'},
+    {id: 'a1', title: 'aaa1', author: 'aaaa1'}
   ]
 },
 {
@@ -35,7 +36,8 @@ const DUMMY_BOOK_STORES = [
   rating: 5,
   countryFlagImg: '',
   bestSellers: [
-    {id: 'c', title: 'ccc', author: 'cccc'}
+    {id: 'c', title: 'ccc', author: 'cccc'},
+    {id: 'c1', title: 'ccc1', author: 'cccc1'}
   ]
 }
 ];
