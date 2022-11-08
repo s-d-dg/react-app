@@ -11,10 +11,10 @@ const DUMMY_BOOK_STORES: BookStoreModel[] = [
       establishmentDate: '1995-02-09T00:00:00+0000',
       website: 'https://www.micro-books-store.com',
       rating: 6,
-      countryFlagImg: 'USA',
+      country: 'USA',
       bestSellers: [
-        { id: 'a', title: 'aaa', author: 'aaaa' },
-        { id: 'a1', title: 'aaa1', author: 'aaaa1' }
+        { id: 'a', title: 'aaa', author: 'aaaa', copiesSold: 100 },
+        { id: 'a1', title: 'aaa1', author: 'aaaa1', copiesSold: 100 }
       ]
     },
     {
@@ -24,9 +24,9 @@ const DUMMY_BOOK_STORES: BookStoreModel[] = [
       establishmentDate: '2011-01-17T00:00:00+0000',
       website: 'https://www.squirro.com',
       rating: 10,
-      countryFlagImg: 'Switzerland',
+      country: 'Switzerland',
       bestSellers: [
-        { id: 'b', title: 'bbb', author: 'bbbb' }
+        { id: 'b', title: 'bbb', author: 'bbbb', copiesSold: 100 }
       ]
     },
     {
@@ -36,10 +36,10 @@ const DUMMY_BOOK_STORES: BookStoreModel[] = [
       establishmentDate: '1971-10-10T00:00:00+0000',
       website: 'https://www.crypto-book-store.com',
       rating: 5,
-      countryFlagImg: 'Poland',
+      country: 'Poland',
       bestSellers: [
-        { id: 'c', title: 'ccc', author: 'cccc' },
-        { id: 'c1', title: 'ccc1', author: 'cccc1' }
+        { id: 'c', title: 'ccc', author: 'cccc', copiesSold: 100 },
+        { id: 'c1', title: 'ccc1', author: 'cccc1', copiesSold: 100 }
       ]
     }
   ];
@@ -51,7 +51,8 @@ const bookStoresSlice = createSlice({
     initialState,
     reducers: {
       loadBookStoresSuccess(state, data: any) {
-        state.bookStores = [...DUMMY_BOOK_STORES];
+        console.log(data);
+        state.bookStores = [...data.payload];
       }
     }
 });

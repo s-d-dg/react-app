@@ -2,6 +2,7 @@ export interface BookModel {
     id: string;
     title: string;
     author: string;
+    copiesSold: number
   };
   
   export interface BookStoreModel {
@@ -11,7 +12,7 @@ export interface BookModel {
     establishmentDate: string;
     website: string;
     rating: number
-    countryFlagImg: string;
+    country: string;
     bestSellers: BookModel[]
   };
 

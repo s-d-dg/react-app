@@ -7,7 +7,12 @@ interface BookStoreDataProps {
 }
 
 const BookStoreData = ({ data, className }: BookStoreDataProps) => {
-    // const bestSellers = data.bestSellers.map(book => (<div key={book.id}>{book.title} | {book.author}</div>));
+    const bestSellers = data.bestSellers.length ?  data.bestSellers.map(book => (
+        <tr key={book.id} className={classes.results}>
+            <td>{book.title}</td>
+            <td>{book.author}</td>
+        </tr>
+    )) : <tr className={classes.results}><td >No data available</td></tr>;
 
     return <div className={`${className} ${classes.data}`}>
         <div className={classes.header}>
@@ -21,12 +26,7 @@ const BookStoreData = ({ data, className }: BookStoreDataProps) => {
                     <td>Best-selling books</td></tr>
             </thead>
             <tbody>
-                {data.bestSellers.map(book => (
-                    <tr key={book.id} className={classes.results}>
-                        <td>{book.title}</td>
-                        <td>{book.author}</td>
-                    </tr>
-                ))}
+                {bestSellers}
             </tbody>
         </table>
     </div>;

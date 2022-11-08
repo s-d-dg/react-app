@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { BookStoreModel } from '../../store/bookStores/model';
 import BookStore from './book-store/book-store';
+import  classes  from './book-store-list.module.css';
 
 interface BookStoreListProps {
     bookStores: BookStoreModel[]
@@ -9,9 +10,9 @@ interface BookStoreListProps {
 const BookStoreList = ({ bookStores }: BookStoreListProps) => {
     const bookStoreCards = bookStores.map(bs => (<BookStore key={bs.id} bookStore={bs}/>));
 
-    return <Fragment>
+    return <div className={classes['list-container']}>
         {bookStoreCards}
-    </Fragment>
+    </div>
 };
 
 export default BookStoreList;

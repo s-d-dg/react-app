@@ -17,7 +17,7 @@ const BookStore = ({bookStore}: BookStoreProps) => {
         <BookStoreFooter 
         establishmentDate={bookStore.establishmentDate}
         website={bookStore.website}
-        countryFlagImg={bookStore.countryFlagImg}
+        countryFlagImg={bookStore.country}
         />
     </Card>
 };
