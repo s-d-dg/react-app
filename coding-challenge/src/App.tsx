@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className={classes.layout}>
-      <div className={classes.title}><h1>BEST SELLERS !</h1></div>
+      <div className={classes.title}><h1>BEST BOOK STORES !</h1></div>
       {isLoading ? <Loader /> :<BookStoreList bookStores={bookStores} />}
     </div>
   );
