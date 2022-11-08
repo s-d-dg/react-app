@@ -1,3 +1,5 @@
+import { DD_MM_YYYY } from '../../shared/date-formatting/date-formats';
+import { formatDateFromISO8601toGivenFormat } from '../../shared/date-formatting/date-formatter';
 import { bookStoreActions } from './index';
 import { BookModel, BookStoreModel } from './model';
 
@@ -12,7 +14,7 @@ export const fetchBookStores = () => {
             }
 
             const jsonResponse = await response.json();
-            
+
             const data = jsonResponse.data;
             const included = jsonResponse.included;
 
@@ -40,7 +42,7 @@ function normalizeResponse(data: any[], included: any[]): BookStoreModel[] {
         id: el.id,
         name: el.attributes.name,
         imgUrl: el.attributes.storeImage,
-        establishmentDate: el.attributes.establishmentDate,
+        establishmentDate: formatDateFromISO8601toGivenFormat(el.attributes.establishmentDate, DD_MM_YYYY),
         website: el.attributes.website,
         rating: el.attributes.rating,
         country: mapToCountryCode(el.relationships.countries.data.id, relatedCountries),
@@ -52,7 +54,9 @@ function normalizeResponse(data: any[], included: any[]): BookStoreModel[] {
 } 
 
 function mapToCountryCode(id: string, allCountries: any[]): string {
-    return allCountries.find(country => country.id === id)?.attributes.code;
+    const code = (allCountries.find(country => country.id === id)?.attributes.code as string).toLowerCase();
+    
+    return `https://flagcdn.com/16x12/${code}.png`;
 }
 
 function mapToBooksWithAuthors(books: any[], allBooks: any[], allAuthors: any[]): BookModel[] {

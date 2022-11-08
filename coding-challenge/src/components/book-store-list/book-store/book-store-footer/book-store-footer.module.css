@@ -3,3 +3,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+.website:hover {
+    cursor: pointer;
+    color: orange;
+}
+
