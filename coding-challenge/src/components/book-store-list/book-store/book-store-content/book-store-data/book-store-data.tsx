@@ -1,5 +1,6 @@
 import classes from './book-store-data.module.css';
 import BookStoreDataProps, { BookStoreDataPropTypes } from '../book-store-content';
+import StarRating from './rating/star-rating';
 
 interface BookStoreDataProps {
     data: BookStoreDataPropTypes;
@@ -7,6 +8,12 @@ interface BookStoreDataProps {
 }
 
 const BookStoreData = ({ data, className }: BookStoreDataProps) => {
+
+    const handleChangeRating = (id: string, updatedRating: number) => {
+        console.log('store id: ', id);
+        console.log('updated rating: ', updatedRating);
+    }
+
     const bestSellers = data.bestSellers.length ?  data.bestSellers.map(book => (
         <tr key={book.id} className={classes.results}>
             <td>{book.title}</td>
@@ -17,7 +24,9 @@ const BookStoreData = ({ data, className }: BookStoreDataProps) => {
     return <div className={`${className} ${classes.data}`}>
         <div className={classes.header}>
             <span className={classes.name}>{data.name}</span>
-            <div className={classes.rating}>with rating {data.rating}</div>
+            <div className={classes.rating}>
+                <StarRating rating={data.rating} changeRating={handleChangeRating.bind(null, data.id)}/>
+            </div>
         </div>
 
         <table>
