@@ -1,6 +1,8 @@
 import classes from './book-store-data.module.css';
 import BookStoreDataProps, { BookStoreDataPropTypes } from '../book-store-content';
 import StarRating from './rating/star-rating';
+import { updateBookStoreRating } from '../../../../../store/bookStores/book-stores-actions';
+import { useDispatch } from 'react-redux';
 
 interface BookStoreDataProps {
     data: BookStoreDataPropTypes;
@@ -8,13 +10,13 @@ interface BookStoreDataProps {
 }
 
 const BookStoreData = ({ data, className }: BookStoreDataProps) => {
+    const dispatch = useDispatch();
 
     const handleChangeRating = (id: string, updatedRating: number) => {
-        console.log('store id: ', id);
-        console.log('updated rating: ', updatedRating);
+        updateBookStoreRating(id, updatedRating)(dispatch);
     }
 
-    const bestSellers = data.bestSellers.length ?  data.bestSellers.map(book => (
+    const bestSellers = data.bestSellers.length ? data.bestSellers.map(book => (
         <tr key={book.id} className={classes.results}>
             <td>{book.title}</td>
             <td>{book.author}</td>
@@ -25,7 +27,7 @@ const BookStoreData = ({ data, className }: BookStoreDataProps) => {
         <div className={classes.header}>
             <span className={classes.name}>{data.name}</span>
             <div className={classes.rating}>
-                <StarRating rating={data.rating} changeRating={handleChangeRating.bind(null, data.id)}/>
+                <StarRating rating={data.rating} changeRating={handleChangeRating.bind(null, data.id)} />
             </div>
         </div>
 

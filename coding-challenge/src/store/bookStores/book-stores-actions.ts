@@ -1,7 +1,5 @@
-import { DD_MM_YYYY } from '../../shared/date-formatting/date-formats';
-import { formatDateFromISO8601toGivenFormat } from '../../shared/date-formatting/date-formatter';
+import { normalizeResponse } from './book-store-response-normalizer';
 import { bookStoreActions } from './index';
-import { BookModel, BookStoreModel } from './model';
 
 
 export const fetchBookStores = () => {
@@ -32,74 +30,47 @@ export const fetchBookStores = () => {
     }
 }
 
-function normalizeResponse(data: any[], included: any[]): BookStoreModel[] {
-    const relatedBooks = included.filter(el => el.type === 'books');
-    const relatedCountries = included.filter(el => el.type === 'countries');
-    const relatedAuthors = included.filter(el => el.type === 'authors');
-    const BOOK_DISPLAY_MAX_VALUE = 2;
+export const updateBookStoreRating = (bookStoreId: string, updatedRating: number) => {
 
-    const bookStores = data.map(el => ({
-        id: el.id,
-        name: el.attributes.name,
-        imgUrl: el.attributes.storeImage,
-        establishmentDate: formatDateFromISO8601toGivenFormat(el.attributes.establishmentDate, DD_MM_YYYY),
-        website: el.attributes.website,
-        rating: el.attributes.rating,
-        country: mapToCountryCode(el.relationships.countries.data.id, relatedCountries),
-        bestSellers: mapToBooksWithAuthors(el.relationships.books?.data, relatedBooks, relatedAuthors)
-        .sort((a,b) => b.copiesSold - a.copiesSold)
-        .splice(0, BOOK_DISPLAY_MAX_VALUE)
-    }));
-    return [...bookStores];
-} 
+    return async (dispatch: any) => {
 
-function mapToCountryCode(id: string, allCountries: any[]): string {
-    const code = (allCountries.find(country => country.id === id)?.attributes.code as string).toLowerCase();
-    
-    return `https://flagcdn.com/16x12/${code}.png`;
-}
 
-function mapToBooksWithAuthors(books: any[], allBooks: any[], allAuthors: any[]): BookModel[] {
-    if(!books) {
-        return [];
-    }
-    
-    const mappedBooks = books.map(book => {
-        const mappedBook = getBook(book.id, allBooks);
+        const update = async () => {
+        const response = await fetch(`http://localhost:3000/stores/${bookStoreId}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                  data: {
+                    type: "stores",
+                    id: bookStoreId,
+                    attributes: {
+                      rating: updatedRating
+                    }
+                  }
+                }),
+            headers: {
+              'Content-type': 'application/vnd.api+json',
+            },
+          });
 
-        if(!mappedBook) {
-            return {
-                id: book.id,
-                title: '',
-                author: '',
-                copiesSold: 0
-            };
+          if(!response.ok) {
+            throw new Error('Patch request error !');
         }
 
-        return {
-        id: book.id,
-        title: mappedBook.title,
-        author: getAuthor(mappedBook.authorId, allAuthors),
-        copiesSold: mappedBook.copiesSold
+        const jsonResponse = await response.json();
+
+        return jsonResponse;
         };
-});
-    return [...mappedBooks];
-}
 
-function getBook(id: string, allBooks: any[]): any {
-    const foundBook = allBooks.find(book => book.id === id);
-
-    if(!foundBook){
-        return null;
+        try {
+        const response =  await update();
+        const updatedBookStore = response.data;
+        
+        if (updatedBookStore.id === bookStoreId && updatedBookStore.attributes.rating === updatedRating){
+            dispatch(bookStoreActions.updateBookStoreRating({bookStoreId, updatedRating}));
+        }
+        } catch(error) {
+            console.log(error);
+        }
+   
     }
-
-    return {
-        title: foundBook?.attributes.name,
-        copiesSold: foundBook?.attributes.copiesSold,
-        authorId: foundBook.relationships.author.data.id
-    };
-}
-
-function getAuthor(id: string, allAuthors: any[]): string {
-    return allAuthors.find(author => author.id === id)?.attributes.fullName;
 }
