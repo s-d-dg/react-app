@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  display: inline;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.rating {
+  display: flex;
+  align-self: center;
+}

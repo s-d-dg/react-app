@@ -1,0 +1,14 @@
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.image {
+  height: 100%;
+}
+
+.data {
+  margin-left: 2rem;
+  width: 100%;
+}
