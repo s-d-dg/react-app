@@ -1,4 +1,4 @@
-import { openUriInNewTab } from '../../../../shared/open-url/url-openet';
+import { openUriInNewTab } from '../../../../../shared/open-url/url-openet';
 import classes from './book-store-footer.module.css';
 
 interface BookStoreFooterProps {

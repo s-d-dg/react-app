@@ -1,6 +1,5 @@
-import { BookStoreModel } from '../../../store/bookStores/model';
-import Card from '../../../ui/card/card';
-import BookStoreContent from './book-store-content/book-store-content';
+import { BookStoreModel } from '../../../../store/bookStores/model';
+import BookStoreContent from './book-store-content';
 import BookStoreFooter from './book-store-footer/book-store-footer';
 
 interface BookStoreProps {
@@ -12,14 +11,14 @@ export type BookStoreContentPropTypes = Omit<BookStoreModel, 'establishmentDate'
 const BookStore = ({bookStore}: BookStoreProps) => {
 
     const contentProps: BookStoreContentPropTypes = {...bookStore};
-    return <Card>
+    return <>
         <BookStoreContent bookStore={contentProps}/>
         <BookStoreFooter 
         establishmentDate={bookStore.establishmentDate}
         website={bookStore.website}
         countryFlagImg={bookStore.country}
         />
-    </Card>
+    </>
 };
 
 export default BookStore;

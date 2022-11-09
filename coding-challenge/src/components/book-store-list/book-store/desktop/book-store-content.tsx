@@ -1,7 +1,7 @@
-import { BookStoreContentPropTypes } from '../book-store';
+import { BookStoreContentPropTypes } from './desktop-book-store';
 import classes from './book-store-content.module.css';
 import BookStoreData from './book-store-data/book-store-data';
-import BookStoreImage from './book-store-image/book-store-image';
+import BookStoreImage from '../book-store-image/book-store-image';
 
 interface BookStoreContenteProps {
     bookStore: BookStoreContentPropTypes;

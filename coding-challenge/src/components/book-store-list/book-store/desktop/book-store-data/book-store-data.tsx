@@ -1,6 +1,6 @@
 import classes from './book-store-data.module.css';
 import BookStoreDataProps, { BookStoreDataPropTypes } from '../book-store-content';
-import StarRating from './rating/star-rating';
+import StarRating from '../../rating/star-rating';
 import { updateBookStoreRating } from '../../../../../store/bookStores/book-stores-actions';
 import { useDispatch } from 'react-redux';
 
