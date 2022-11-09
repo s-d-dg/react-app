@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+tr.results {
+    border-bottom: 1px solid orange;
+    width: 50%;
+}

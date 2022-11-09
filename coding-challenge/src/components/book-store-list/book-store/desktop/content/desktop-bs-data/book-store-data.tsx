@@ -1,8 +1,9 @@
 import classes from './book-store-data.module.css';
 import BookStoreDataProps, { BookStoreDataPropTypes } from '../desktop-content';
+import { useDispatch } from 'react-redux';
 import StarRating from '../../../shared/rating/star-rating';
 import { updateBookStoreRating } from '../../../../../../store/bookStores/book-stores-actions';
-import { useDispatch } from 'react-redux';
+import BestSellersTable from '../../../shared/table/best-sellers-table';
 
 interface BookStoreDataProps {
     data: BookStoreDataPropTypes;
@@ -16,13 +17,6 @@ const BookStoreData = ({ data, className }: BookStoreDataProps) => {
         updateBookStoreRating(id, updatedRating)(dispatch);
     }
 
-    const bestSellers = data.bestSellers.length ? data.bestSellers.map(book => (
-        <tr key={book.id} className={classes.results}>
-            <td>{book.title}</td>
-            <td>{book.author}</td>
-        </tr>
-    )) : <tr className={classes.results}><td >No data available</td></tr>;
-
     return <div className={`${className} ${classes.data}`}>
         <div className={classes.header}>
             <span className={classes.name}>{data.name}</span>
@@ -31,15 +25,7 @@ const BookStoreData = ({ data, className }: BookStoreDataProps) => {
             </div>
         </div>
 
-        <table>
-            <thead>
-                <tr className={classes['table-title']}>
-                    <td>Best-selling books</td></tr>
-            </thead>
-            <tbody>
-                {bestSellers}
-            </tbody>
-        </table>
+        <BestSellersTable bestSellers={data.bestSellers}/>
     </div>;
 }
 
