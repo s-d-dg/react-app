@@ -6,7 +6,7 @@ interface BestSellersTableProps {
 }
 
 const BestSellersTable = ({ bestSellers }: BestSellersTableProps) => {
-  const booksToDisplay = bestSellers ? (
+  const booksToDisplay = bestSellers.length ? (
     bestSellers.map((book) => (
       <tr key={book.id} className={classes.results}>
         <td>{book.title}</td>

@@ -1,3 +1,6 @@
+
+
+
 export interface BookModel {
   id: string;
   title: string;
@@ -18,4 +21,6 @@ export interface BookStoreModel {
 
 export interface BookStoreStateModel {
   bookStores: BookStoreModel[];
+  isLoading: boolean;
+  loadFailed: boolean;
 }

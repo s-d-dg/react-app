@@ -1,19 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { BookStoreStateModel } from "./model";
 
-const initialState: BookStoreStateModel = { bookStores: [] };
+const initialState: BookStoreStateModel = { bookStores: [], loadFailed: false, isLoading: false };
 
 const bookStoresSlice = createSlice({
   name: "book-store",
   initialState,
   reducers: {
+    loadBookStores(state) {
+      state.isLoading = true;
+    },
     loadBookStoresSuccess(state, data: any) {
       state.bookStores = [...data.payload];
+      state.isLoading = false;
     },
-    updateBookStoreRating(state, action) {
-      const { bookStoreId, updatedRating } = action.payload;
+    loadBookStoresFailure(state) {
+      state.isLoading = false;
+      state.loadFailed = true;
+    },
+    updateBookStoreRating(state, data) {
+      const { bookStoreId, updatedRating } = data.payload;
 
-      const bookStoreIndex = state.bookStores.findIndex(
+      const bookStoreIndex = state.bookStores?.findIndex(
         (bs) => bs.id === bookStoreId
       );
       state.bookStores[bookStoreIndex] = {

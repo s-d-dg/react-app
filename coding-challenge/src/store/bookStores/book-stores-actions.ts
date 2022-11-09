@@ -25,7 +25,7 @@ export const fetchBookStores = () => {
       dispatch(bookStoreActions.loadBookStoresSuccess(bookStoresData));
     } catch (error) {
       console.log(error);
-      dispatch(bookStoreActions.loadBookStoresSuccess([]));
+      dispatch(bookStoreActions.loadBookStoresFailure());
     }
   };
 };

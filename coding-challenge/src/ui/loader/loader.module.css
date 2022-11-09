@@ -1,7 +1,11 @@
+.spinner-container {
+  height: 70vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .spinner {
-  position: absolute;
-  top: 50%;
-  right: 50%;
   width: 50px;
   aspect-ratio: 1;
   border-radius: 50%;
