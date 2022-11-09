@@ -11,7 +11,7 @@ If you need more information read README.md in /book-store-api
 ## 2 Starting frontend application
 Please go to ./coding-challenge
 - run `npm install` to install all dependencies
-- Serve it on the port 3500 by running `npm run start`
+- Serve it on the port 3005 by running `npm run start`
 
 This application is written using React. 
 
