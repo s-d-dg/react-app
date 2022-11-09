@@ -1,19 +1,17 @@
 import { BookStoreModel } from '../../../../store/bookStores/model';
-import BookStoreContent from './book-store-content';
-import BookStoreFooter from './book-store-footer/book-store-footer';
+import { BookStoreProps } from '../book-store';
+import DesktopBookStoreContent from './content/desktop-content';
+import DesktopBookStoreFooter from './footer/book-store-footer';
 
-interface BookStoreProps {
-    bookStore: BookStoreModel
-}
 
 export type BookStoreContentPropTypes = Omit<BookStoreModel, 'establishmentDate' | 'website' | 'countryFlagImg'>;
 
-const BookStore = ({bookStore}: BookStoreProps) => {
+const DesktopBookStore = ({bookStore}: BookStoreProps) => {
 
     const contentProps: BookStoreContentPropTypes = {...bookStore};
     return <>
-        <BookStoreContent bookStore={contentProps}/>
-        <BookStoreFooter 
+        <DesktopBookStoreContent bookStore={contentProps}/>
+        <DesktopBookStoreFooter 
         establishmentDate={bookStore.establishmentDate}
         website={bookStore.website}
         countryFlagImg={bookStore.country}
@@ -21,4 +19,4 @@ const BookStore = ({bookStore}: BookStoreProps) => {
     </>
 };
 
-export default BookStore;
+export default DesktopBookStore;

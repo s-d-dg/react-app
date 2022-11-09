@@ -1,7 +1,9 @@
-import { BookStoreContentPropTypes } from './desktop-book-store';
-import classes from './book-store-content.module.css';
-import BookStoreData from './book-store-data/book-store-data';
-import BookStoreImage from '../book-store-image/book-store-image';
+
+import BookStoreImage from '../../shared/image/book-store-image';
+import { BookStoreContentPropTypes } from '../desktop-book-store';
+import classes from './desktop-content.module.css';
+import BookStoreData from './desktop-bs-data/book-store-data';
+
 
 interface BookStoreContenteProps {
     bookStore: BookStoreContentPropTypes;
@@ -10,7 +12,7 @@ interface BookStoreContenteProps {
 export type BookStoreDataPropTypes = Omit<BookStoreContentPropTypes, 'imgUrl'>;
 
 
-const BookStoreContent = ({ bookStore }: BookStoreContenteProps) => {
+const DesktopBookStoreContent = ({ bookStore }: BookStoreContenteProps) => {
     const bookStoreDataProps: BookStoreDataPropTypes = {...bookStore};
     return <div className={classes.content}>
         <BookStoreImage className={classes.image} imgUrl={bookStore.imgUrl} />
@@ -18,4 +20,4 @@ const BookStoreContent = ({ bookStore }: BookStoreContenteProps) => {
     </div>
 };
 
-export default BookStoreContent;
+export default DesktopBookStoreContent;

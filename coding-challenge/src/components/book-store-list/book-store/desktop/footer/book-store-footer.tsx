@@ -1,4 +1,4 @@
-import { openUriInNewTab } from '../../../../../shared/open-url/url-openet';
+import { openUriInNewTab } from '../../../../../shared/open-url/url-opener';
 import classes from './book-store-footer.module.css';
 
 interface BookStoreFooterProps {
@@ -7,7 +7,7 @@ interface BookStoreFooterProps {
     countryFlagImg: string;
 }
 
-const BookStoreFooter = ({ establishmentDate, website, countryFlagImg }: BookStoreFooterProps) => {
+const DesktopBookStoreFooter = ({ establishmentDate, website, countryFlagImg }: BookStoreFooterProps) => {
 
     const clickWebsiteHandler = () => {
         openUriInNewTab(website);
@@ -24,4 +24,4 @@ const BookStoreFooter = ({ establishmentDate, website, countryFlagImg }: BookSto
     </div>;
 };
 
-export default BookStoreFooter;
+export default DesktopBookStoreFooter;

@@ -1,7 +1,6 @@
-import { Fragment } from 'react';
 import { BookStoreModel } from '../../store/bookStores/model';
-import BookStore from './book-store/desktop/desktop-book-store';
-import  classes  from './book-store-list.module.css';
+import classes from './book-store-list.module.css';
+import BookStore from './book-store/book-store';
 
 interface BookStoreListProps {
     bookStores: BookStoreModel[]
