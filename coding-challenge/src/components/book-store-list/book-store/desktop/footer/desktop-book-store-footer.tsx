@@ -13,7 +13,7 @@ const DesktopBookStoreFooter = ({
 
   return (
     <div className={classes.footer}>
-      <div>
+      <div data-id='desktop-card-footer'>
         {establishmentDate} -{" "}
         <span className={classes.website} onClick={clickWebsiteHandler}>
           {website}

@@ -12,7 +12,7 @@ const MobileBookStoreFooter = ({
   };
 
   return (
-    <div>
+    <div data-id='mobile-card-footer'>
       <div className={classes.footer}>
         <div>{establishmentDate}</div>
         <img src={country} srcSet={country} width="28" height="21" alt="flag" />

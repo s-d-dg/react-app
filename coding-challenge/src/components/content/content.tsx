@@ -26,7 +26,7 @@ const Content = ({ className }: ContentPropTypes) => {
     }
 
     if (loadFailed) {
-        content = <div className={classes.error}>Something went wrong...  &#59;&#40;</div>;
+        content = <div id='main-error' className={classes.error}>Something went wrong...  &#59;&#40;</div>;
     }
 
     if (bookStores.length) {

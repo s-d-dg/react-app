@@ -1,0 +1,14 @@
+{
+    "name": "integration-tests",
+    "version": "0.0.0",
+    "scripts": {
+        "e2e": "cypress run",
+        "e2e:watch": "cypress open"
+    },
+    "private": true,
+    "devDependencies": {
+        "cypress": "7.6.0",
+        "cypress-iframe": "1.0.1",
+        "har-validator": "~5.1.3"
+    }
+}
