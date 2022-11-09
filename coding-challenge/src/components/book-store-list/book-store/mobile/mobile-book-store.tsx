@@ -8,17 +8,15 @@ export type BookStoreHeaderPropTypes = Pick<BookStoreModel, 'id' | 'name' | 'rat
 export type BookStoreBodyPropTypes = Pick<BookStoreModel, 'imgUrl' | 'bestSellers'>;
 export type BookStoreFooterPropTypes = Pick<BookStoreModel, 'establishmentDate' | 'website' | 'country'>;
 
-const MobileBookStore = ({bookStore}: BookStoreProps) => {
-    const headearProps: BookStoreHeaderPropTypes = {...bookStore};
-    const bodyProps: BookStoreBodyPropTypes = {...bookStore};
-    const footerProps: BookStoreFooterPropTypes = {...bookStore};
-
+const MobileBookStore = ({ bookStore }: BookStoreProps) => {
+    const headearProps: BookStoreHeaderPropTypes = { ...bookStore };
+    const bodyProps: BookStoreBodyPropTypes = { ...bookStore };
+    const footerProps: BookStoreFooterPropTypes = { ...bookStore };
 
     return <>
         <MobileHeader {...headearProps} />
         <MobileBookStoreBody {...bodyProps} />
         <MobileBookStoreFooter {...footerProps} />
-     
     </>
 };
 

@@ -1,13 +1,8 @@
 import { openUriInNewTab } from '../../../../../shared/open-url/url-opener';
-import classes from './book-store-footer.module.css';
+import { BookStoreFooterPropTypes } from '../desktop-book-store';
+import classes from './desktop-book-store-footer.module.css';
 
-interface BookStoreFooterProps {
-    establishmentDate: string;
-    website: string;
-    countryFlagImg: string;
-}
-
-const DesktopBookStoreFooter = ({ establishmentDate, website, countryFlagImg }: BookStoreFooterProps) => {
+const DesktopBookStoreFooter = ({ establishmentDate, website, country }: BookStoreFooterPropTypes) => {
 
     const clickWebsiteHandler = () => {
         openUriInNewTab(website);
@@ -16,8 +11,8 @@ const DesktopBookStoreFooter = ({ establishmentDate, website, countryFlagImg }: 
     return <div className={classes.footer}>
         <div>{establishmentDate} - <span className={classes.website} onClick={clickWebsiteHandler}>{website}</span></div>
         <img
-            src={countryFlagImg}
-            srcSet={countryFlagImg}
+            src={country}
+            srcSet={country}
             width="28"
             height="21"
             alt="flag" />
