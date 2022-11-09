@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <Content className={classes.layout}/>
+      <Content className={classes.layout} />
     </>
   );
 }

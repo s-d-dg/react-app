@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { BookStoreStateModel } from "./model";
 
-const initialState: BookStoreStateModel = { bookStores: [], loadFailed: false, isLoading: false };
+const initialState: BookStoreStateModel = {
+  bookStores: [],
+  loadFailed: false,
+  isLoading: false,
+};
 
 const bookStoresSlice = createSlice({
   name: "book-store",

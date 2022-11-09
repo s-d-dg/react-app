@@ -29,7 +29,9 @@ const BookStoreDetails = ({
   return (
     <div className={className}>
       <div className={classes.header}>
-        <span data-id='desktop-card-title' className={classes.name}>{name}</span>
+        <span data-id="desktop-card-title" className={classes.name}>
+          {name}
+        </span>
         <div className={classes.rating}>
           <StarRating
             rating={rating}

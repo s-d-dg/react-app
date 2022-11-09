@@ -19,7 +19,7 @@ If you need more information read README.md in /coding-challenge
 
 
 ## 3 Running Cypress tests
-First make sure that you have running frontend application by doing steps from point 2
+First make sure that you have running frontend application by doing steps from point 2. 
 Backend is not required because tests contain mocks of responses from the backend.
 
 Please go to ./integration-tests

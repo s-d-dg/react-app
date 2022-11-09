@@ -12,7 +12,7 @@ const MobileHeader = ({ id, name, rating }: BookStoreHeaderPropTypes) => {
   };
   return (
     <div className={classes.header}>
-      <div data-id='mobile-card-title'>{name}</div>
+      <div data-id="mobile-card-title">{name}</div>
       <StarRating
         rating={rating}
         changeRating={handleChangeRating.bind(null, id)}

@@ -8,7 +8,7 @@ interface BestSellersTableProps {
 const BestSellersTable = ({ bestSellers }: BestSellersTableProps) => {
   const booksToDisplay = bestSellers.length ? (
     bestSellers.map((book) => (
-      <tr data-id='book-details' key={book.id} className={classes.results}>
+      <tr data-id="book-details" key={book.id} className={classes.results}>
         <td>{book.title}</td>
         <td>{book.author}</td>
       </tr>
@@ -21,7 +21,9 @@ const BestSellersTable = ({ bestSellers }: BestSellersTableProps) => {
 
   return (
     <>
-      <div data-id='best-sellers-title' className={classes["table-title"]}>Best-selling books</div>
+      <div data-id="best-sellers-title" className={classes["table-title"]}>
+        Best-selling books
+      </div>
       <table>
         <tbody>{booksToDisplay}</tbody>
       </table>
