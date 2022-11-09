@@ -1,11 +1,11 @@
 .card {
-    border: 1px solid;
-    padding: 1rem 2rem;
-    margin-top: 1.5rem;
-    border-radius: 10px;
+  border: 1px solid;
+  padding: 1rem 2rem;
+  margin-top: 1.5rem;
+  border-radius: 10px;
 }
 
 .card:hover {
-    border: 1px solid orange;
-    box-shadow: 2px 3px 1px 3px orange;
+  border: 1px solid orange;
+  box-shadow: 2px 3px 1px 3px orange;
 }

@@ -1,14 +1,14 @@
 .footer {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .website {
-    text-align: center;
+  text-align: center;
 }
 
 .website:hover {
-    cursor: pointer;
-    color: orange;
+  cursor: pointer;
+  color: orange;
 }

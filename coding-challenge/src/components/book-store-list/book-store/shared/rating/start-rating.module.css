@@ -1,13 +1,13 @@
 button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-  .on {
-    color: orange;
-  }
-  .off {
-    color: #ccc;
-  }
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.on {
+  color: orange;
+}
+.off {
+  color: #ccc;
+}

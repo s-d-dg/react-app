@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import classes from './App.module.css';
-import BookStoreList from './components/book-store-list/book-store-list';
-import Header from './components/header/header';
-import { fetchBookStores } from './store/bookStores/book-stores-actions';
-import Loader from './ui/loader/loader';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import classes from "./App.module.css";
+import BookStoreList from "./components/book-store-list/book-store-list";
+import Header from "./components/header/header";
+import { fetchBookStores } from "./store/bookStores/book-stores-actions";
+import Loader from "./ui/loader/loader";
 
 function App() {
   const dispatch = useDispatch();
