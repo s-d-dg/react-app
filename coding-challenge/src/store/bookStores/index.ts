@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { BookStoreStateModel } from "./model";
+import { fetchData } from "./book-stores-actions";
 
 const initialState: BookStoreStateModel = {
   bookStores: [],
@@ -7,21 +8,20 @@ const initialState: BookStoreStateModel = {
   isLoading: false,
 };
 
+export const fetchBookStoresThunk = createAsyncThunk('book-store/fetch', async () => {
+  try {
+    const bookStoresData = await fetchData();
+    return Promise.resolve(bookStoresData);
+  } catch (error) {
+    console.log(error);
+    return Promise.reject();
+}
+});
+
 const bookStoresSlice = createSlice({
   name: "book-store",
   initialState,
   reducers: {
-    loadBookStores(state) {
-      state.isLoading = true;
-    },
-    loadBookStoresSuccess(state, data: any) {
-      state.bookStores = [...data.payload];
-      state.isLoading = false;
-    },
-    loadBookStoresFailure(state) {
-      state.isLoading = false;
-      state.loadFailed = true;
-    },
     updateBookStoreRating(state, data) {
       const { bookStoreId, updatedRating } = data.payload;
 
@@ -33,6 +33,20 @@ const bookStoresSlice = createSlice({
         rating: updatedRating,
       };
     },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchBookStoresThunk.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchBookStoresThunk.fulfilled, (state, action) => {
+        state.bookStores = [...action.payload];
+        state.isLoading = false;
+      })
+      .addCase(fetchBookStoresThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.loadFailed = true;
+      })
   },
 });
 

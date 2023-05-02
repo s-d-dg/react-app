@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { BookStoreModel } from "../../../../store/bookStores/model";
 import { BookStoreProps } from "../book-store";
 import DesktopBookStoreContent from "./body/desktop-book-store-body";
@@ -13,7 +14,7 @@ export type BookStoreFooterPropTypes = Pick<
 >;
 
 const DesktopBookStore = ({ bookStore }: BookStoreProps) => {
-  const contentProps: BookStoreContentPropTypes = { ...bookStore };
+  const contentProps: BookStoreContentPropTypes = useMemo(() => ({ ...bookStore }), [bookStore]);
   const footerProps: BookStoreFooterPropTypes = { ...bookStore };
   return (
     <>

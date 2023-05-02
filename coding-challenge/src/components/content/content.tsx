@@ -1,20 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { bookStoreActions } from "../../store/bookStores";
-import { fetchBookStores } from "../../store/bookStores/book-stores-actions";
+import { fetchBookStoresThunk } from "../../store/bookStores";
 import Loader from "../../ui/loader/loader";
 import BookStoreList from "../book-store-list/book-store-list";
 import classes from "./content.module.css";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 interface ContentPropTypes {
   className: string;
 }
 
 const Content = ({ className }: ContentPropTypes) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
+  
   useEffect(() => {
-    dispatch(bookStoreActions.loadBookStores());
-    fetchBookStores()(dispatch);
+    dispatch(fetchBookStoresThunk());
   }, []);
 
   const { bookStores, isLoading, loadFailed } = useSelector(

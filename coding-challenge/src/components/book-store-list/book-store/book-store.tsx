@@ -1,3 +1,4 @@
+import React from 'react';
 import useViewport from "../../../shared/hooks/use-viewport";
 import { BookStoreModel } from "../../../store/bookStores/model";
 import Card from "../../../ui/card/card";
@@ -23,4 +24,4 @@ const BookStore = ({ bookStore }: BookStoreProps) => {
   );
 };
 
-export default BookStore;
+export default React.memo(BookStore);
